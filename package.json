@@ -1,0 +1,23 @@
+{
+  "name": "cmd-console",
+  "version": "0.1.0",
+  "description": "cmdlet-based console",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://bitbucket.org/randydu/cmd-console.git"
+  },
+  "keywords": [
+    "cmdlet",
+    "console"
+  ],
+  "author": "randydu@gmail.com",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/randydu/cmd-console#readme",
+  "dependencies": {
+    "inquirer": "^5.2.0"
+  }
+}
