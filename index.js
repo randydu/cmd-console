@@ -1,36 +1,50 @@
 'use strict';
 
 const inquirer = require('inquirer');
+inquirer.registerPrompt('command', require('inquirer-command-prompt'));
 
-module.exports = function(cmdlet){
-    function promptAndRun(){
-        return inquirer.prompt([{
-            type: 'input',
-            name: 'cmd',
-            message: 'cmd',
-            suffix: ' $ '
-        }]).then(answer => {
-            let cmd = answer.cmd;
+const cmdlets = require(process.env.CMD_CONSOLE_DEV ? '../cmdlets' : 'cmdlets'); 
 
-            if(cmd !== ''){
-                if(cmd === 'quit' || cmd === 'exit') return true; //quit shell
+//all registered cmds including our internal commands
+var cmds = [];
 
-                return cmdlet.run(cmd === 'help' ? [] /* top menu */ : cmd)
-                    .catch(err => {}) //ignore cmd error
-                    .then(promptAndRun) //for next cmd
-            }
+function promptAndRun(){
+    return inquirer.prompt([{
+        type: 'command',
+        name: 'cmd',
+        message: '>',
+        context: 0,
+        autoCompletion:cmds
+    }]).then(answer => {
+        let cmd = answer.cmd;
 
-            return promptAndRun();
-        });
-    }
+        if(cmd !== ''){
+            if(cmd === '.exit') return true; //quit shell
 
-    return {
-        run(){
-            promptAndRun().then(()=> {
-                cmdlet.message('--- bye! ---');
-            }).catch(err=>{
-                cmdlet.error(err.message);
-            })
+            return cmdlets.run(cmd)
+                .catch(err => {}) //ignore cmd error
+                .then(promptAndRun) //for next cmd
         }
-    }
+
+        return promptAndRun();
+    });
+}
+
+module.exports = {
+    run(){
+        cmds = cmdlets.getCmds((cmd)=> true).map( cmd => cmd.name ).concat(['.exit']);
+
+        cmdlets.on('cmd_added', (cmd)=> {
+            cmds.push(cmd.name);
+        });
+
+        console.log('press [CTRL+C] or ".exit" to quit.');
+        console.log('press [TAB] to show available commands or do auto-complete.\n');
+
+        promptAndRun().then(()=> {
+            cmdlets.message('--- bye! ---');
+        }).catch(err=>{
+            cmdlets.error(err.message);
+        })
+    },
 }

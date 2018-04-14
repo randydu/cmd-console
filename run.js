@@ -1,10 +1,10 @@
 'use strict'
 
 /**
- * Example how to combine both packages to run a console.
+ *  launch console
  */
 
-const cmdlet = require('../cmdlets');
-const cmd_console = require('./index.js')(cmdlet);
+//product usage
+//require('cmd-console').run();
 
-cmd_console.run();
+require('./index.js').run();
