@@ -40,18 +40,18 @@ API
 
  __run()__: starts console
 
-    ```javascript
-    /**
-     * Example how to combine both packages to run a console.
-     */
+```javascript
+/**
+ * Example how to combine both packages to run a console.
+ */
 
-    const cmdlet = require('cmdlets');
+const cmdlet = require('cmdlets');
 
-    //load supported cmdlets
-    cmdlets.loadModule('cmd-system', __dirname + '/sys');
-    cmdlets.loadModule('cmd-util', __dirname + '/util');
-    ...
+//load supported cmdlets
+cmdlets.addModule( __dirname + '/sys', 'cmd-system');
+cmdlets.addModule(__dirname + '/util', 'cmd-util');
+...
 
-    //now starts our command console
-    require('cmd-console').run();
-    ```
+//now starts our command console
+require('cmd-console').run();
+```
