@@ -1,6 +1,6 @@
 {
   "name": "cmd-console",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "cmdlet-based console",
   "main": "index.js",
   "scripts": {
@@ -16,7 +16,7 @@
   ],
   "author": "randydu@gmail.com",
   "license": "ISC",
-  "homepage": "https://bitbucket.org/randydu/cmd-console#readme",
+  "homepage": "https://github.com/randydu/cmd-console",
   "dependencies": {
     "cmdlets": "^0.7.1",
     "inquirer": "^6.2.1",
