@@ -1,6 +1,6 @@
 {
   "name": "cmd-console",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "cmdlet-based console",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://bitbucket.org/randydu/cmd-console.git"
+    "url": "https://github.com/randydu/cmd-console.git"
   },
   "keywords": [
     "cmdlet",
@@ -18,8 +18,8 @@
   "license": "ISC",
   "homepage": "https://bitbucket.org/randydu/cmd-console#readme",
   "dependencies": {
-    "cmdlets": "^0.6.0",
-    "inquirer": "^5.2.0",
-    "inquirer-command-prompt": "0.0.7"
+    "cmdlets": "^0.7.1",
+    "inquirer": "^6.2.1",
+    "inquirer-command-prompt": "0.0.8"
   }
 }

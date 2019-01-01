@@ -1,6 +1,13 @@
 change log
 ==========
 
+0.2.2: ( Dec. 31, 2018)
+-----------------------
+
+- upgrade dependencies;
+- change git repository from bitbucket to github;
+
+
 0.2.1: ( Apr. 15, 2018)
 -----------------------
 
